@@ -34,7 +34,21 @@ const PlaceSearchforReturn = ({ LabelName, width, setArrivalCode }) => {
     }
     setPlace(value);
     try {
-      const response = await fetch("airport.json");
+      const myHeaders = new Headers();
+      myHeaders.append("Accept", "application/json");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("apikey", "ITT88534696524514");
+      myHeaders.append(
+        "secretecode",
+        "BOUINpK3g7kUI9TJ9eVgaK8l1stXNzz4YC5KiOBotf9"
+      );
+      const response = await fetch(
+        "https://devapi.innotraveltech.com/tools/airport-autosuggetion-data",
+        {
+          method: "GET",
+          headers: myHeaders,
+        }
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

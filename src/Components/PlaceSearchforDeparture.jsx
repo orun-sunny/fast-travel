@@ -5,6 +5,7 @@ const PlaceSearchforDeparture = ({ LabelName, width, setDepartCode }) => {
   const [place, setPlace] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [loading, setLoading] = useState(false);
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
@@ -32,8 +33,23 @@ const PlaceSearchforDeparture = ({ LabelName, width, setDepartCode }) => {
       return;
     }
     setPlace(value);
+    setLoading(true);
     try {
-      const response = await fetch("airport.json");
+      const myHeaders = new Headers();
+      myHeaders.append("Accept", "application/json");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("apikey", "ITT88534696524514");
+      myHeaders.append(
+        "secretecode",
+        "BOUINpK3g7kUI9TJ9eVgaK8l1stXNzz4YC5KiOBotf9"
+      );
+      const response = await fetch(
+        "https://devapi.innotraveltech.com/tools/airport-autosuggetion-data",
+        {
+          method: "GET",
+          headers: myHeaders,
+        }
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -75,27 +91,31 @@ const PlaceSearchforDeparture = ({ LabelName, width, setDepartCode }) => {
         onKeyDown={handleKeyDown}
       />
       <label className="absolute top-3 left-2 label_field">{LabelName}</label>
-      <ul className="absolute z-10 bg-white border border-gray-300 rounded mt-1 w-[300px] shadow-md max-h-48 overflow-y-auto w-[400px]">
-        {suggestions.map((suggestion, index) => (
-          <li
-            key={suggestion.code}
-            className={`Suggestion_list cursor-pointer py-1 px-2 hover:bg-gray-100 ${
-              focusedIndex === index ? "focused" : ""
-            }`}
-            onClick={() => handleSuggestionClick(suggestion)}
-          >
-            <div className="flex items-center justify-between">
-              <p className="flex items-center justify-center">
-                <PiAirplaneInFlight color="#f30921" className="mr-2" />
-                <div className="flex flex-col">
-                  <span className="font-semibold">{suggestion.city_name}</span>
-                  <span>{suggestion.airport_name}</span>
-                </div>
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {suggestions.length > 0 && (
+        <ul className="absolute z-10 bg-white border border-gray-300 rounded mt-1 shadow-md max-h-48 overflow-y-auto w-[400px]">
+          {suggestions.map((suggestion, index) => (
+            <li
+              key={suggestion.code}
+              className={`Suggestion_list cursor-pointer py-1 px-2 hover:bg-gray-100 ${
+                focusedIndex === index ? "focused" : ""
+              }`}
+              onClick={() => handleSuggestionClick(suggestion)}
+            >
+              <div className="flex items-center justify-between">
+                <p className="flex items-center justify-center">
+                  <PiAirplaneInFlight color="#f30921" className="mr-2" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">
+                      {suggestion.city_name}
+                    </span>
+                    <span>{suggestion.airport_name}</span>
+                  </div>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
