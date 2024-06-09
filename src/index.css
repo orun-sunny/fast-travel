@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.banner_image {
+  width: 100%;
+  height: 700px;
+  clip-path: polygon(0% 40%, 0% 0%, 100% 0%, 100% 40%, 68% 54%, 32% 54%);
+  background-image: url(bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -10;
+}
+
+.label_field {
+  font-size: .85em;
+  top: -3px;
+  color: #333;
+}
+
+.input_field {
+  outline: none;
+}
+
+.input_field:focus {
+  outline: none;
+}
+
+
+.Suggestion_list.focused {
+  background-color: #f0f0f0;
+  color: #ce061a;
+  font-weight: bold;
+}
+
+.tab.tab-active:not(.tab-disabled):not([disabled]),
+.tab:is(input:checked) {
+  background: lightgrey;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  color: #ce061a;
+}
+
+button.btn-minus {
+  margin-right: 5px;
+  margin-left: 5px;
+  background: #a39f9f;
+  border-radius: 25px;
+  padding: 5px;
+  color: white;
+}
+
+button.btn-plus {
+  margin-right: 5px;
+  margin-left: 5px;
+  background: #ce061a;
+  border-radius: 25px;
+  padding: 5px;
+  color: white;
+}
+
+.react-datepicker {
+  display: flex !important;
+  /* Set calendar container to flex */
+  flex-direction: row !important;
+  /* Set flex direction to row */
+}
+
+.react-datepicker {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 0.8rem;
+  background-color: #f1e7e7;
+  color: #c4baba;
+  border: 1px solid #ce061a;
+  border-radius: 0.3rem;
+  display: inline-block;
+  position: relative;
+  line-height: initial;
+  width: 600px;
+  height: 300px;
+}
+
+.react-datepicker__header {
+  text-align: center;
+  background-color: #eeadad;
+  border-bottom: 1px solid #aeaeae;
+  border-top-left-radius: 0.3rem;
+  padding: 8px 0;
+  position: relative;
+  width: 300px;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  color: #675d5d;
+  display: inline-block;
+  width: 1.7rem;
+  line-height: 1.7rem;
+  text-align: center;
+  margin: 0.166rem;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.tab-btn.active {
+  color: #f30921;
+  border: none;
+  border-bottom: 2px solid #f30921;
+}
