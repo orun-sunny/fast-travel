@@ -19,6 +19,7 @@ const Menu = () => {
   };
   return (
     <div className="">
+      {/* main tab */}
       <Tab />
       <div className=" relative  bg-white max-w-screen-lg shadow-xl  w-full px-8  flex flex-col lg:flex-row   ">
         <div

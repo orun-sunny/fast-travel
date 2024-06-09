@@ -8,7 +8,7 @@ const Banner = () => {
         backgroundPosition: "center",
         height: "70vh", // Set the height as needed
         borderRadius: "", // Adjust border radius for wave-like shape
-        overflow: "hidden", // Hide overflow for the wave effect
+        overflow: "hidden",
         position: "relative",
       }}
     >

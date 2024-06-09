@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import { PiAirplaneTiltFill } from "react-icons/pi";
+
 import { Outlet } from "react-router-dom";
 import Banner from "./Banner";
 const Home = () => {
